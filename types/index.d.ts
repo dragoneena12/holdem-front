@@ -1,0 +1,1 @@
+export {Icard} from './card';

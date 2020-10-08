@@ -1,10 +1,14 @@
-import React from 'react';
-import Head from 'next/head';
-import styles from '../styles/Home.module.css';
+import React, { useState } from "react";
+import Head from "next/head";
+import styles from "../styles/Home.module.css";
 
-import {Card} from '../components/Card';
+import { CardImage } from "../components/CardImage";
+import { Form } from "../components/Form";
+import { Card } from "../models";
 
 const Home: React.FC = () => {
+  const [myCard, setMyCard] = useState<Card>(new Card(1, "S"));
+
   return (
     <div className={styles.container}>
       <Head>
@@ -13,7 +17,8 @@ const Home: React.FC = () => {
       </Head>
 
       <main className={styles.main}>
-        <Card name="KD" />
+        <CardImage card={myCard} />
+        <Form myCard={myCard} setMyCard={setMyCard} />
       </main>
 
       <footer className={styles.footer}>
@@ -22,8 +27,7 @@ const Home: React.FC = () => {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Powered by
-          {' '}
+          Powered by{" "}
           <img src="/vercel.svg" alt="Vercel Logo" className={styles.logo} />
         </a>
       </footer>
