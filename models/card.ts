@@ -14,7 +14,7 @@ export class Card implements Icard {
       return "1";
     } else if (this.number == 1) {
       return "A";
-    } else if (this.number < 10) {
+    } else if (1 < this.number && this.number < 10) {
       return String(this.number);
     } else if (this.number == 10) {
       return "T";
