@@ -5,7 +5,6 @@ export class Card implements Icard {
   suit: "S" | "H" | "D" | "C";
 
   constructor(number: number, suit: "S" | "H" | "D" | "C") {
-    /* コンストラクタ */
     this.number = number;
     this.suit = suit;
   }

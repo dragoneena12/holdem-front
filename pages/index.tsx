@@ -2,12 +2,15 @@ import React, { useState } from "react";
 import Head from "next/head";
 import styles from "../styles/Home.module.css";
 
-import { CardImage } from "../components/CardImage";
-import { Form } from "../components/Form";
+import { CardPair } from "../components/CardPair";
+import { GetCards } from "../components/GetCards";
 import { Card } from "../models";
 
 const Home: React.FC = () => {
-  const [myCard, setMyCard] = useState<Card>(new Card(1, "S"));
+  const [cards, setCards] = useState<Card[]>([
+    new Card(1, "S"),
+    new Card(2, "S"),
+  ]);
 
   return (
     <div className={styles.container}>
@@ -17,8 +20,8 @@ const Home: React.FC = () => {
       </Head>
 
       <main className={styles.main}>
-        <CardImage card={myCard} />
-        <Form myCard={myCard} setMyCard={setMyCard} />
+        <CardPair cards={cards} />
+        <GetCards cards={cards} setCards={setCards} />
       </main>
 
       <footer className={styles.footer}>
