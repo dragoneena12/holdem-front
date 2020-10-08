@@ -2,9 +2,9 @@ import React, { useState } from "react";
 import Head from "next/head";
 import styles from "../styles/Home.module.css";
 
-import { CardPair } from "../components/CardPair";
-import { GetCards } from "../components/GetCards";
-import { OpenConnection } from "../components/OpenConnection";
+import { Table } from "../components/Table/Table";
+import { Panel } from "../components/UI/Panel";
+
 import { Card } from "../models";
 
 const Home: React.FC = () => {
@@ -23,19 +23,9 @@ const Home: React.FC = () => {
       </Head>
 
       <main className={styles.main}>
-        <CardPair cards={cards} />
-        {socket ? (
-          <GetCards setCards={setCards} socket={socket} />
-        ) : (
-          <OpenConnection setSocket={setSocket} />
-        )}
+        <Table cards={cards} playerNum={9} />
+        <Panel setCards={setCards} socket={socket} setSocket={setSocket} />
       </main>
-
-      <footer className={styles.footer}>
-        <a href="https://www.lapi.gq" target="_blank" rel="noopener noreferrer">
-          Powered by lapi.gq
-        </a>
-      </footer>
     </div>
   );
 };

@@ -1,8 +1,8 @@
 import React from "react";
 import Button from "@material-ui/core/Button";
 
-import { Card } from "../models";
-import { ISockHand } from "../types";
+import { Card } from "../../models";
+import { ISockHand } from "../../types";
 
 interface IGetCards {
   setCards: React.Dispatch<React.SetStateAction<Card[]>>;
@@ -16,7 +16,6 @@ export const GetCards: React.FC<IGetCards> = (props) => {
     };
     props.socket.send(JSON.stringify(message));
     props.socket.addEventListener("message", function (event) {
-      console.log("Message from server ", event.data);
       const hands: ISockHand = JSON.parse(event.data);
       const nCards = [];
       for (const i of [0, 1]) {

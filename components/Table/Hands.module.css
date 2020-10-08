@@ -1,0 +1,28 @@
+.myHand {
+  position: absolute;
+  bottom: 5%;
+  left: 50%;
+  width: 8vw;
+  transform: translateX(-50%);
+  display: flex;
+  justify-content: center;
+  z-index: 1;
+}
+
+.myHand img {
+  width: 100%;
+  margin: 1px;
+}
+
+.otherHand {
+  position: absolute;
+  width: 5vw;
+  transform: translate(-50%, -50%);
+  display: flex;
+  justify-content: center;
+}
+
+.otherHand img {
+  width: 100%;
+  margin: 1px;
+}
