@@ -1,10 +1,10 @@
-import {Icard} from '../types';
+import { Icard } from "../types";
 
 export class Card implements Icard {
   number: number;
-  suit: 'S' | 'H' | 'D' | 'C';
+  suit: "S" | "H" | "D" | "C";
 
-  constructor(number: number, suit: 'S' | 'H' | 'D' | 'C') {
+  constructor(number: number, suit: "S" | "H" | "D" | "C") {
     /* コンストラクタ */
     this.number = number;
     this.suit = suit;
@@ -12,19 +12,19 @@ export class Card implements Icard {
 
   getNumberString(): string | undefined {
     if (this.number == 1) {
-      return 'A';
+      return "A";
     } else if (this.number < 10) {
       return String(this.number);
     } else if (this.number == 10) {
-      return 'T';
+      return "T";
     } else if (this.number == 11) {
-      return 'J';
+      return "J";
     } else if (this.number == 12) {
-      return 'Q';
+      return "Q";
     } else if (this.number == 13) {
-      return 'K';
+      return "K";
     } else {
-      throw Error('invalid card number.');
+      throw Error("invalid card number.");
     }
   }
 

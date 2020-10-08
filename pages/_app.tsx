@@ -1,10 +1,10 @@
-import React from 'react';
+import React from "react";
 
 // import App from "next/app";
-import '../styles/globals.css';
-import type {AppProps /* , AppContext */} from 'next/app';
+import "../styles/globals.css";
+import type { AppProps /* , AppContext */ } from "next/app";
 
-const MyApp: React.FC<AppProps> = ({Component, pageProps}) => {
+const MyApp: React.FC<AppProps> = ({ Component, pageProps }) => {
   return <Component {...pageProps} />;
 };
 

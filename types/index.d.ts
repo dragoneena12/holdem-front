@@ -1,1 +1,1 @@
-export {Icard} from './card';
+export { Icard } from "./card";
