@@ -2,15 +2,17 @@ import { Icard } from "../types";
 
 export class Card implements Icard {
   number: number;
-  suit: "S" | "H" | "D" | "C";
+  suit: "S" | "H" | "D" | "C" | "B";
 
-  constructor(number: number, suit: "S" | "H" | "D" | "C") {
+  constructor(number: number, suit: "S" | "H" | "D" | "C" | "B") {
     this.number = number;
     this.suit = suit;
   }
 
   getNumberString(): string | undefined {
-    if (this.number == 1) {
+    if (this.number == 0) {
+      return "1";
+    } else if (this.number == 1) {
       return "A";
     } else if (this.number < 10) {
       return String(this.number);

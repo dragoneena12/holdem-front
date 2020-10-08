@@ -4,13 +4,16 @@ import styles from "../styles/Home.module.css";
 
 import { CardPair } from "../components/CardPair";
 import { GetCards } from "../components/GetCards";
+import { OpenConnection } from "../components/OpenConnection";
 import { Card } from "../models";
 
 const Home: React.FC = () => {
   const [cards, setCards] = useState<Card[]>([
-    new Card(1, "S"),
-    new Card(2, "S"),
+    new Card(0, "B"),
+    new Card(0, "B"),
   ]);
+
+  const [socket, setSocket] = useState<WebSocket>();
 
   return (
     <div className={styles.container}>
@@ -21,7 +24,11 @@ const Home: React.FC = () => {
 
       <main className={styles.main}>
         <CardPair cards={cards} />
-        <GetCards cards={cards} setCards={setCards} />
+        {socket ? (
+          <GetCards setCards={setCards} socket={socket} />
+        ) : (
+          <OpenConnection setSocket={setSocket} />
+        )}
       </main>
 
       <footer className={styles.footer}>
