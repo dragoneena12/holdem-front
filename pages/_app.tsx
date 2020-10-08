@@ -1,10 +1,12 @@
-// import App from "next/app";
-import "../styles/globals.css"
-import type { AppProps /*, AppContext */ } from 'next/app'
+import React from 'react';
 
-function MyApp({ Component, pageProps }: AppProps) {
-  return <Component {...pageProps} />
-}
+// import App from "next/app";
+import '../styles/globals.css';
+import type {AppProps /* , AppContext */} from 'next/app';
+
+const MyApp: React.FC<AppProps> = ({Component, pageProps}) => {
+  return <Component {...pageProps} />;
+};
 
 // Only uncomment this method if you have blocking data requirements for
 // every single page in your application. This disables the ability to
@@ -18,4 +20,4 @@ function MyApp({ Component, pageProps }: AppProps) {
 //   return { ...appProps }
 // }
 
-export default MyApp
+export default MyApp;
