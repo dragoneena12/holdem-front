@@ -14,6 +14,7 @@ const Home: React.FC = () => {
   ]);
 
   const [socket, setSocket] = useState<WebSocket>();
+  const [name, setName] = useState<string>("");
 
   return (
     <div className={styles.container}>
@@ -24,7 +25,13 @@ const Home: React.FC = () => {
 
       <main className={styles.main}>
         <Table cards={cards} playerNum={9} />
-        <Panel setCards={setCards} socket={socket} setSocket={setSocket} />
+        <Panel
+          setCards={setCards}
+          socket={socket}
+          setSocket={setSocket}
+          name={name}
+          setName={setName}
+        />
       </main>
     </div>
   );
