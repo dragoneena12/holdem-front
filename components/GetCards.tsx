@@ -12,7 +12,7 @@ interface IGetCards {
 export const GetCards: React.FC<IGetCards> = (props) => {
   const cardDealHandler = () => {
     const message = {
-      message: "reqCard",
+      action: "reqCard",
     };
     props.socket.send(JSON.stringify(message));
     props.socket.addEventListener("message", function (event) {
