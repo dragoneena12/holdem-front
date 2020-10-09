@@ -24,7 +24,7 @@ const Home: React.FC = () => {
       </Head>
 
       <main className={styles.main}>
-        <Table cards={cards} playerNum={9} />
+        <Table cards={cards} playerNum={9} name={name} />
         <Panel
           setCards={setCards}
           socket={socket}

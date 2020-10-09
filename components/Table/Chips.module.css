@@ -1,0 +1,26 @@
+.myChip {
+  position: absolute;
+  bottom: 0%;
+  left: 50%;
+  width: 8vw;
+  transform: translateX(-50%);
+  display: flex;
+  justify-content: center;
+  z-index: 1;
+}
+
+.myChip p {
+  margin: 0;
+}
+
+.otherChip {
+  position: absolute;
+  width: 5vw;
+  transform: translate(-50%, 0%);
+  display: flex;
+  justify-content: center;
+}
+
+.otherChip p {
+  margin: 0;
+}
