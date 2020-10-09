@@ -8,7 +8,7 @@ export const Chips: React.FC<{ playerNum: number; name: string }> = (props) => (
   <>
     <div className={classes.myChip}>
       <Chip
-        avatar={<Avatar>{props.name[0].toUpperCase()}</Avatar>}
+        avatar={<Avatar>{props.name[0]?.toUpperCase()}</Avatar>}
         label={
           <>
             <p>{props.name}</p>
