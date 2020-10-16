@@ -73,6 +73,18 @@ export const Panel: React.FC<IPanel> = (props) => (
           name={props.name}
           action="muck"
         />
+        <Action
+          setCards={props.setCards}
+          socket={props.socket}
+          name={props.name}
+          action="seat"
+        />
+        <Action
+          setCards={props.setCards}
+          socket={props.socket}
+          name={props.name}
+          action="start"
+        />
       </>
     ) : (
       <OpenConnection setSocket={props.setSocket} />

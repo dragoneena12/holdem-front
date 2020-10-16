@@ -21,7 +21,9 @@ type actionType =
   | "fold"
   | "allIn"
   | "showDown"
-  | "muck";
+  | "muck"
+  | "seat"
+  | "start";
 
 const actionName = {
   reqCard: "カードをリクエスト",
@@ -33,6 +35,8 @@ const actionName = {
   allIn: "オールイン",
   showDown: "ショーダウン",
   muck: "マック",
+  seat: "すわる",
+  start: "スタート"
 };
 
 export const Action: React.FC<IAction> = (props) => {
@@ -63,7 +67,7 @@ export const Action: React.FC<IAction> = (props) => {
       <Button variant="contained" color="primary" onClick={cardDealHandler}>
         {actionName[props.action]}
       </Button>
-      {props.action === "bet" || props.action === "raise" ? (
+      {props.action === "bet" || props.action === "raise" || props.action === "seat" ? (
         <TextField
           label="Amount"
           variant="outlined"
