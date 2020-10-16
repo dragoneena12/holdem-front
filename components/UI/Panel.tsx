@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Card } from "../../models";
+import { Card, Table } from "../../models";
 import { Action } from "./Action";
 import { Name } from "./Name";
 import { OpenConnection } from "./OpenConnection";
@@ -12,6 +12,7 @@ interface IPanel {
   setSocket: React.Dispatch<React.SetStateAction<WebSocket | undefined>>;
   name: string;
   setName: React.Dispatch<React.SetStateAction<string>>;
+  setTable: React.Dispatch<React.SetStateAction<Table>>;
 }
 
 export const Panel: React.FC<IPanel> = (props) => (
@@ -87,7 +88,7 @@ export const Panel: React.FC<IPanel> = (props) => (
         />
       </>
     ) : (
-      <OpenConnection setSocket={props.setSocket} />
+      <OpenConnection setSocket={props.setSocket} setTable={props.setTable} />
     )}
   </div>
 );

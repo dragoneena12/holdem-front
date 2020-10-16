@@ -2,10 +2,10 @@ import React, { useState } from "react";
 import Head from "next/head";
 import styles from "../styles/Home.module.css";
 
-import { Table } from "../components/Table/Table";
+import { TableView } from "../components/Table/TableView";
 import { Panel } from "../components/UI/Panel";
 
-import { Card } from "../models";
+import { Card, Table } from "../models";
 
 const Home: React.FC = () => {
   const [cards, setCards] = useState<Card[]>([
@@ -15,6 +15,7 @@ const Home: React.FC = () => {
 
   const [socket, setSocket] = useState<WebSocket>();
   const [name, setName] = useState<string>("");
+  const [table, setTable] = useState(new Table());
 
   return (
     <div className={styles.container}>
@@ -24,13 +25,14 @@ const Home: React.FC = () => {
       </Head>
 
       <main className={styles.main}>
-        <Table cards={cards} playerNum={9} name={name} />
+        <TableView table={table} playerNum={6} name={name} socket={socket} />
         <Panel
           setCards={setCards}
           socket={socket}
           setSocket={setSocket}
           name={name}
           setName={setName}
+          setTable={setTable}
         />
       </main>
     </div>
