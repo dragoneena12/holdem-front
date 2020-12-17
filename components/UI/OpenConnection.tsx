@@ -7,9 +7,10 @@ import { ItableAPI } from "../../types";
 export const OpenConnection: React.FC<{
   setSocket: React.Dispatch<React.SetStateAction<WebSocket | undefined>>;
   setTable: React.Dispatch<React.SetStateAction<Table>>;
+  targetIP: string;
 }> = (props) => {
   const connectionHandler = () => {
-    const socket = new WebSocket("ws://localhost:8765");
+    const socket = new WebSocket(`ws://${props.targetIP}:8765`);
     socket.onopen = () => {
       console.log("接続完了");
       props.setSocket(socket);

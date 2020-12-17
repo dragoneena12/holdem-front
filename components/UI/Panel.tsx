@@ -3,6 +3,7 @@ import React from "react";
 import { Card, Table } from "../../models";
 import { Action } from "./Action";
 import { Name } from "./Name";
+import { TargetIP } from "./TargetIP";
 import { OpenConnection } from "./OpenConnection";
 import classes from "./Panel.module.css";
 
@@ -12,6 +13,8 @@ interface IPanel {
   setSocket: React.Dispatch<React.SetStateAction<WebSocket | undefined>>;
   name: string;
   setName: React.Dispatch<React.SetStateAction<string>>;
+  targetIP: string;
+  setTargetIP: React.Dispatch<React.SetStateAction<string>>;
   setTable: React.Dispatch<React.SetStateAction<Table>>;
 }
 
@@ -88,7 +91,14 @@ export const Panel: React.FC<IPanel> = (props) => (
         />
       </>
     ) : (
-      <OpenConnection setSocket={props.setSocket} setTable={props.setTable} />
+      <>
+        <TargetIP targetIP={props.targetIP} setTargetIP={props.setTargetIP} />
+        <OpenConnection
+          setSocket={props.setSocket}
+          setTable={props.setTable}
+          targetIP={props.targetIP}
+        />
+      </>
     )}
   </div>
 );

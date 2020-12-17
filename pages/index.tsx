@@ -15,6 +15,7 @@ const Home: React.FC = () => {
 
   const [socket, setSocket] = useState<WebSocket>();
   const [name, setName] = useState<string>("");
+  const [targetIP, setTargetIP] = useState<string>("localhost");
   const [table, setTable] = useState(new Table());
 
   return (
@@ -32,6 +33,8 @@ const Home: React.FC = () => {
           setSocket={setSocket}
           name={name}
           setName={setName}
+          targetIP={targetIP}
+          setTargetIP={setTargetIP}
           setTable={setTable}
         />
       </main>
