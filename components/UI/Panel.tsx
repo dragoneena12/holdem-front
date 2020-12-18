@@ -23,7 +23,6 @@ export const Panel: React.FC<IPanel> = (props) => (
     <Name name={props.name} setName={props.setName} />
     {props.socket ? (
       <>
-        <Action socket={props.socket} name={props.name} action="reqCard" />
         <Action socket={props.socket} name={props.name} action="check" />
         <Action socket={props.socket} name={props.name} action="call" />
         <Action socket={props.socket} name={props.name} action="bet" />
@@ -32,8 +31,8 @@ export const Panel: React.FC<IPanel> = (props) => (
         <Action socket={props.socket} name={props.name} action="allIn" />
         <Action socket={props.socket} name={props.name} action="showDown" />
         <Action socket={props.socket} name={props.name} action="muck" />
-        <Action socket={props.socket} name={props.name} action="seat" />
         <Action socket={props.socket} name={props.name} action="start" />
+        <Action socket={props.socket} name={props.name} action="reset" />
       </>
     ) : (
       <>

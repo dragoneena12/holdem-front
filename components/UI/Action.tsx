@@ -19,7 +19,8 @@ type actionType =
   | "showDown"
   | "muck"
   | "seat"
-  | "start";
+  | "start"
+  | "reset";
 
 const actionName = {
   reqCard: "カードをリクエスト",
@@ -33,6 +34,7 @@ const actionName = {
   muck: "マック",
   seat: "すわる",
   start: "スタート",
+  reset: "リセット",
 };
 
 export const Action: React.FC<IAction> = (props) => {
