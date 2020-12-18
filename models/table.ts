@@ -11,6 +11,7 @@ export class Table implements Itable {
   buttonPlayer: number | null = null;
   currentPlayer: number | null = null;
   hand: Card[] = [];
+  betting: number[] = [];
 
   setTableStatus(data: ItableAPI): void {
     this.state = data.state;
@@ -30,5 +31,6 @@ export class Table implements Itable {
       }
       this.hand = [...nHand];
     }
+    this.betting = data.betting ? data.betting : this.betting;
   }
 }

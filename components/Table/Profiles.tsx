@@ -2,6 +2,7 @@ import React from "react";
 import Avatar from "@material-ui/core/Avatar";
 import Chip from "@material-ui/core/Chip";
 import Button from "@material-ui/core/Button";
+import StarIcon from "@material-ui/icons/Star";
 
 import { Table } from "../../models";
 import classes from "./Profiles.module.css";
@@ -67,6 +68,13 @@ export const Profiles: React.FC<{
                     <p>{player.name}</p>
                     <p>${player.bankroll}</p>
                   </>
+                }
+                color={props.table.currentPlayer === i ? "primary" : "default"}
+                onDelete={() => {
+                  return;
+                }}
+                deleteIcon={
+                  props.table.buttonPlayer === i ? <StarIcon /> : <div />
                 }
               />
               {player.name === props.name &&

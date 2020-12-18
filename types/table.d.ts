@@ -11,6 +11,7 @@ export interface Itable {
   buttonPlayer: number | null;
   currentPlayer: number | null;
   hand: Card[];
+  betting: number[];
 }
 
 export interface ItableAPI {
@@ -26,4 +27,5 @@ export interface ItableAPI {
     number: number;
     suit: "S" | "H" | "D" | "C" | "B";
   }[];
+  betting?: number[];
 }

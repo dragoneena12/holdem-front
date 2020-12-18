@@ -3,6 +3,7 @@ import React, { useEffect } from "react";
 import { Table } from "../../models";
 import { Hands } from "./Hands";
 import { Profiles } from "./Profiles";
+import { Betting } from "./Betting";
 import classes from "./TableView.module.css";
 
 export const TableView: React.FC<{
@@ -19,6 +20,11 @@ export const TableView: React.FC<{
   return (
     <div className={classes.Table}>
       <Hands
+        table={props.table}
+        playerNum={props.playerNum}
+        mySeatNum={props.mySeatNum}
+      />
+      <Betting
         table={props.table}
         playerNum={props.playerNum}
         mySeatNum={props.mySeatNum}
