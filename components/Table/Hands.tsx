@@ -21,9 +21,10 @@ export const Hands: React.FC<{
             alt={props.table.hand[1].getCardString()}
           />
         </div>
-        {[...Array(props.playerNum - 1)].map((_, i) => (
-          <>
-            {props.table.seatingChart[i] && i !== props.mySeatNum && (
+        {[...Array(props.playerNum - 1)].map(
+          (_, i) =>
+            props.table.seatingChart[i] &&
+            i !== props.mySeatNum && (
               <div
                 className={classes.otherHand}
                 key={i}
@@ -51,9 +52,8 @@ export const Hands: React.FC<{
                 <img src={`/svg/1B.svg`} alt="1B" />
                 <img src={`/svg/1B.svg`} alt="1B" />
               </div>
-            )}
-          </>
-        ))}
+            )
+        )}
       </>
     )}
   </>

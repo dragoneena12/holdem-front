@@ -1,0 +1,20 @@
+.Board {
+  position: absolute;
+  bottom: 40%;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  z-index: 1;
+}
+
+.Cards {
+  display: flex;
+  flex-direction: row;
+}
+
+.Cards img {
+  width: 8vw;
+  margin: 1px;
+}

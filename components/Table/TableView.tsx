@@ -4,6 +4,7 @@ import { Table } from "../../models";
 import { Hands } from "./Hands";
 import { Profiles } from "./Profiles";
 import { Betting } from "./Betting";
+import { Board } from "./Board";
 import classes from "./TableView.module.css";
 
 export const TableView: React.FC<{
@@ -29,6 +30,7 @@ export const TableView: React.FC<{
         playerNum={props.playerNum}
         mySeatNum={props.mySeatNum}
       />
+      <Board table={props.table} />
       <Profiles
         table={props.table}
         name={props.name}
