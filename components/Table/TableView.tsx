@@ -10,14 +10,26 @@ export const TableView: React.FC<{
   playerNum: number;
   name: string;
   socket?: WebSocket;
+  mySeatNum: number;
+  setMySeatNum: React.Dispatch<React.SetStateAction<number>>;
 }> = (props) => {
   useEffect(() => {
     console.log(props.table);
   }, [props.table]);
   return (
     <div className={classes.Table}>
-      <Hands table={props.table} playerNum={props.playerNum} />
-      <Profiles table={props.table} name={props.name} socket={props.socket} />
+      <Hands
+        table={props.table}
+        playerNum={props.playerNum}
+        mySeatNum={props.mySeatNum}
+      />
+      <Profiles
+        table={props.table}
+        name={props.name}
+        socket={props.socket}
+        mySeatNum={props.mySeatNum}
+        setMySeatNum={props.setMySeatNum}
+      />
     </div>
   );
 };

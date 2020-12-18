@@ -12,6 +12,7 @@ const Home: React.FC = () => {
   const [name, setName] = useState<string>("");
   const [targetIP, setTargetIP] = useState<string>("localhost");
   const [table, setTable] = useState(new Table());
+  const [mySeatNum, setMySeatNum] = useState(0);
 
   return (
     <div className={styles.container}>
@@ -21,7 +22,14 @@ const Home: React.FC = () => {
       </Head>
 
       <main className={styles.main}>
-        <TableView table={table} playerNum={6} name={name} socket={socket} />
+        <TableView
+          table={table}
+          playerNum={6}
+          name={name}
+          socket={socket}
+          mySeatNum={mySeatNum}
+          setMySeatNum={setMySeatNum}
+        />
         <Panel
           socket={socket}
           setSocket={setSocket}

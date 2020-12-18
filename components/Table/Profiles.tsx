@@ -10,6 +10,8 @@ export const Profiles: React.FC<{
   table: Table;
   name: string;
   socket?: WebSocket;
+  mySeatNum: number;
+  setMySeatNum: React.Dispatch<React.SetStateAction<number>>;
 }> = (props) => {
   const seatHandler = (i: number) => {
     const sendData = {
@@ -18,6 +20,7 @@ export const Profiles: React.FC<{
       amount: i,
     };
     props.socket?.send(JSON.stringify(sendData));
+    props.setMySeatNum(() => i);
   };
   const leaveHandler = (i: number) => {
     const sendData = {
@@ -26,6 +29,7 @@ export const Profiles: React.FC<{
       amount: i,
     };
     props.socket?.send(JSON.stringify(sendData));
+    props.setMySeatNum(() => 0);
   };
   return (
     <>
@@ -38,7 +42,8 @@ export const Profiles: React.FC<{
               40 *
                 Math.cos(
                   (1 / 2) * Math.PI +
-                    ((2 * Math.PI) / props.table.seatingChart.length) * (i + 1)
+                    ((2 * Math.PI) / props.table.seatingChart.length) *
+                      (i - props.mySeatNum)
                 ) +
               50
             }%`,
@@ -46,7 +51,8 @@ export const Profiles: React.FC<{
               40 *
                 Math.sin(
                   (1 / 2) * Math.PI +
-                    ((2 * Math.PI) / props.table.seatingChart.length) * (i + 1)
+                    ((2 * Math.PI) / props.table.seatingChart.length) *
+                      (i - props.mySeatNum)
                 ) +
               50
             }%`,
