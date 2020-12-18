@@ -10,7 +10,6 @@ import { Table } from "../models";
 const Home: React.FC = () => {
   const [socket, setSocket] = useState<WebSocket>();
   const [name, setName] = useState<string>("");
-  const [targetIP, setTargetIP] = useState<string>("localhost");
   const [table, setTable] = useState(new Table());
   const [mySeatNum, setMySeatNum] = useState(0);
 
@@ -35,8 +34,6 @@ const Home: React.FC = () => {
           setSocket={setSocket}
           name={name}
           setName={setName}
-          targetIP={targetIP}
-          setTargetIP={setTargetIP}
           table={table}
           setTable={setTable}
         />
