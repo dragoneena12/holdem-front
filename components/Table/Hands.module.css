@@ -1,6 +1,6 @@
 .myHand {
   position: absolute;
-  bottom: 5%;
+  bottom: 10%;
   left: 50%;
   width: 8vw;
   transform: translateX(-50%);

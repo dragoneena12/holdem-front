@@ -69,7 +69,8 @@ export const Profiles: React.FC<{
                   </>
                 }
               />
-              {player.id === props.name ? (
+              {player.name === props.name &&
+              props.table.state == "beforeGame" ? (
                 <Button
                   variant="contained"
                   color="primary"
@@ -82,7 +83,9 @@ export const Profiles: React.FC<{
           ) : (
             <>
               {props.table.state == "beforeGame" ? (
-                props.table.seatingChart.find((el) => el?.id === props.name) ? (
+                props.table.seatingChart.find(
+                  (el) => el?.name === props.name
+                ) ? (
                   <Button variant="contained" color="primary" disabled>
                     空席
                   </Button>
