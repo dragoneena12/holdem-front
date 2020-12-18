@@ -5,14 +5,9 @@ import styles from "../styles/Home.module.css";
 import { TableView } from "../components/Table/TableView";
 import { Panel } from "../components/UI/Panel";
 
-import { Card, Table } from "../models";
+import { Table } from "../models";
 
 const Home: React.FC = () => {
-  const [cards, setCards] = useState<Card[]>([
-    new Card(0, "B"),
-    new Card(0, "B"),
-  ]);
-
   const [socket, setSocket] = useState<WebSocket>();
   const [name, setName] = useState<string>("");
   const [targetIP, setTargetIP] = useState<string>("localhost");
@@ -28,13 +23,13 @@ const Home: React.FC = () => {
       <main className={styles.main}>
         <TableView table={table} playerNum={6} name={name} socket={socket} />
         <Panel
-          setCards={setCards}
           socket={socket}
           setSocket={setSocket}
           name={name}
           setName={setName}
           targetIP={targetIP}
           setTargetIP={setTargetIP}
+          table={table}
           setTable={setTable}
         />
       </main>

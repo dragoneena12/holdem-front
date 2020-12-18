@@ -75,19 +75,21 @@ export const Profiles: React.FC<{
             </>
           ) : (
             <>
-              {props.table.seatingChart.find((el) => el?.id === props.name) ? (
-                <Button variant="contained" color="primary" disabled>
-                  空席
-                </Button>
-              ) : (
-                <Button
-                  variant="contained"
-                  color="primary"
-                  onClick={() => seatHandler(i)}
-                >
-                  着席する
-                </Button>
-              )}
+              {props.table.state == "beforeGame" ? (
+                props.table.seatingChart.find((el) => el?.id === props.name) ? (
+                  <Button variant="contained" color="primary" disabled>
+                    空席
+                  </Button>
+                ) : (
+                  <Button
+                    variant="contained"
+                    color="primary"
+                    onClick={() => seatHandler(i)}
+                  >
+                    着席する
+                  </Button>
+                )
+              ) : null}
             </>
           )}
         </div>

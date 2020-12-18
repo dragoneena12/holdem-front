@@ -1,4 +1,5 @@
 import React from "react";
+import clone from "clone";
 import Button from "@material-ui/core/Button";
 
 import { Table } from "../../models";
@@ -6,6 +7,7 @@ import { ItableAPI } from "../../types";
 
 export const OpenConnection: React.FC<{
   setSocket: React.Dispatch<React.SetStateAction<WebSocket | undefined>>;
+  table: Table;
   setTable: React.Dispatch<React.SetStateAction<Table>>;
   targetIP: string;
 }> = (props) => {
@@ -16,10 +18,12 @@ export const OpenConnection: React.FC<{
       props.setSocket(socket);
     };
     socket.addEventListener("message", function (e: MessageEvent<string>) {
-      const nextTable = new Table();
-      const data = JSON.parse(e.data) as ItableAPI;
-      nextTable.setTableStatus(data.state, data.seating_chart);
-      props.setTable(nextTable);
+      props.setTable((prev) => {
+        const nextTable = clone(prev);
+        const data = JSON.parse(e.data) as ItableAPI;
+        nextTable.setTableStatus(data);
+        return nextTable;
+      });
     });
   };
 
