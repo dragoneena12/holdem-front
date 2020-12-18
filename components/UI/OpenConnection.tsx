@@ -9,10 +9,9 @@ export const OpenConnection: React.FC<{
   setSocket: React.Dispatch<React.SetStateAction<WebSocket | undefined>>;
   table: Table;
   setTable: React.Dispatch<React.SetStateAction<Table>>;
-  targetIP: string;
 }> = (props) => {
   const connectionHandler = () => {
-    const socket = new WebSocket(`ws://${props.targetIP}:8765`);
+    const socket = new WebSocket(`ws://${process.env.serverAddress}`);
     socket.onopen = () => {
       console.log("接続完了");
       props.setSocket(socket);
