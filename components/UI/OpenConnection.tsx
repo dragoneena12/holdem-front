@@ -11,7 +11,7 @@ export const OpenConnection: React.FC<{
   setTable: React.Dispatch<React.SetStateAction<Table>>;
 }> = (props) => {
   const connectionHandler = () => {
-    const socket = new WebSocket(`ws://${process.env.serverAddress}`);
+    const socket = new WebSocket(process.env.serverAddress!);
     socket.onopen = () => {
       console.log("接続完了");
       props.setSocket(socket);
