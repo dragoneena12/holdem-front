@@ -1,6 +1,6 @@
 .betting {
   position: absolute;
-  width: 5vw;
+  padding: 4px;
   transform: translate(-50%, -50%);
   display: flex;
   justify-content: center;
