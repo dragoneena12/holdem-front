@@ -15,30 +15,46 @@ interface IPanel {
   setTable: React.Dispatch<React.SetStateAction<Table>>;
 }
 
-export const Panel: React.FC<IPanel> = (props) => (
-  <div className={classes.Panel}>
-    <Name name={props.name} setName={props.setName} />
-    {props.socket ? (
-      <>
-        <Action socket={props.socket} name={props.name} action="check" />
-        <Action socket={props.socket} name={props.name} action="call" />
-        <Action socket={props.socket} name={props.name} action="bet" />
-        <Action socket={props.socket} name={props.name} action="raise" />
-        <Action socket={props.socket} name={props.name} action="fold" />
-        <Action socket={props.socket} name={props.name} action="allIn" />
-        <Action socket={props.socket} name={props.name} action="showDown" />
-        <Action socket={props.socket} name={props.name} action="muck" />
-        <Action socket={props.socket} name={props.name} action="start" />
-        <Action socket={props.socket} name={props.name} action="reset" />
-      </>
-    ) : (
-      <>
-        <OpenConnection
-          setSocket={props.setSocket}
-          table={props.table}
-          setTable={props.setTable}
-        />
-      </>
-    )}
-  </div>
-);
+export const Panel: React.FC<IPanel> = (props) => {
+  const currentMaxBet = props.table.betting.reduce(
+    (a, b) => (a > b ? a : b),
+    0
+  );
+  return (
+    <div className={classes.Panel}>
+      {!props.socket && <Name name={props.name} setName={props.setName} />}
+      {props.socket ? (
+        <>
+          {currentMaxBet === 0 && (
+            <Action socket={props.socket} name={props.name} action="check" />
+          )}
+          {currentMaxBet !== 0 && (
+            <Action socket={props.socket} name={props.name} action="call" />
+          )}
+          {currentMaxBet === 0 && (
+            <Action socket={props.socket} name={props.name} action="bet" />
+          )}
+          {currentMaxBet !== 0 && (
+            <Action socket={props.socket} name={props.name} action="raise" />
+          )}
+          <Action socket={props.socket} name={props.name} action="fold" />
+          {/* <Action socket={props.socket} name={props.name} action="allIn" />
+          <Action socket={props.socket} name={props.name} action="showDown" />
+          <Action socket={props.socket} name={props.name} action="muck" /> */}
+          {props.table.state === "beforeGame" && (
+            <Action socket={props.socket} name={props.name} action="start" />
+          )}
+          <Action socket={props.socket} name={props.name} action="reset" />
+        </>
+      ) : (
+        <>
+          <OpenConnection
+            setSocket={props.setSocket}
+            table={props.table}
+            setTable={props.setTable}
+          />
+        </>
+      )}
+    </div>
+  );
+};
