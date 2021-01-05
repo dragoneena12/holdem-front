@@ -11,6 +11,18 @@ export interface Itable {
   buttonPlayer: number | null;
   currentPlayer: number | null;
   hand: Card[];
+  handRank:
+    | "royal_flush"
+    | "straight_flush"
+    | "four_of_a_kind"
+    | "full_house"
+    | "flush"
+    | "straight"
+    | "three_of_a_kind"
+    | "two_pair"
+    | "one_pair"
+    | "high_card"
+    | null;
   board: Card[];
   betting: number[];
   potSize: number;
@@ -29,6 +41,17 @@ export interface ItableAPI {
     number: number;
     suit: "S" | "H" | "D" | "C" | "B";
   }[];
+  hand_rank?:
+    | "royal_flush"
+    | "straight_flush"
+    | "four_of_a_kind"
+    | "full_house"
+    | "flush"
+    | "straight"
+    | "three_of_a_kind"
+    | "two_pair"
+    | "one_pair"
+    | "high_card";
   board?: {
     number: number;
     suit: "S" | "H" | "D" | "C" | "B";

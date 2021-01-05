@@ -11,6 +11,18 @@ export class Table implements Itable {
   buttonPlayer: number | null = null;
   currentPlayer: number | null = null;
   hand: Card[] = [];
+  handRank:
+    | "royal_flush"
+    | "straight_flush"
+    | "four_of_a_kind"
+    | "full_house"
+    | "flush"
+    | "straight"
+    | "three_of_a_kind"
+    | "two_pair"
+    | "one_pair"
+    | "high_card"
+    | null = null;
   board: Card[] = [];
   betting: number[] = [];
   potSize = 0;
@@ -32,6 +44,7 @@ export class Table implements Itable {
       data.hand.forEach((card) => nHand.push(new Card(card.number, card.suit)));
       this.hand = [...nHand];
     }
+    this.handRank = data.hand_rank !== undefined ? data.hand_rank : null;
     if (data.board !== undefined) {
       const nBoard: Card[] = [];
       data.board.forEach((card) =>

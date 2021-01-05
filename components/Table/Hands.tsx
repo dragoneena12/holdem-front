@@ -1,3 +1,4 @@
+import { table } from "console";
 import React from "react";
 
 import { Table } from "../../models";
@@ -11,6 +12,7 @@ export const Hands: React.FC<{
   <>
     {props.table.hand.length == 2 && (
       <>
+        <p className={classes.handRank}>{props.table.handRank}</p>
         <div className={classes.myHand}>
           <img
             src={`/svg/${props.table.hand[0].getCardString()}.svg`}
