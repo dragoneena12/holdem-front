@@ -1,4 +1,3 @@
-import { table } from "console";
 import React from "react";
 
 import { Table } from "../../models";
@@ -26,7 +25,7 @@ export const Hands: React.FC<{
             alt={props.table.hand[1].getCardString()}
           />
         </div>
-        {[...Array(props.playerNum - 1)].map(
+        {[...Array(props.playerNum)].map(
           (_, i) =>
             props.table.seatingChart[i] &&
             i !== props.mySeatNum && (

@@ -46,6 +46,9 @@ export const Action: React.FC<IAction> = (props) => {
       name: props.name,
       amount: amount,
     };
+    if (typeof amount !== "number") {
+      return;
+    }
     props.socket.send(JSON.stringify(sendData));
   };
 
