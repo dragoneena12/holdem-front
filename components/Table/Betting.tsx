@@ -10,7 +10,7 @@ export const Betting: React.FC<{
 }> = (props) => (
   <>
     {props.table.state !== "beforeGame" &&
-      [...Array(props.playerNum - 1)].map(
+      [...Array(props.playerNum)].map(
         (_, i) =>
           props.table.seatingChart[i] && (
             <p
