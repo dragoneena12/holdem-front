@@ -2,7 +2,16 @@
 import { Card } from "../models/card";
 
 export interface Itable {
-  state: "" | "beforeGame" | "dealingHands" | "preflop" | "flop";
+  state:
+    | ""
+    | "beforeGame"
+    | "dealingHands"
+    | "preflop"
+    | "flop"
+    | "turn"
+    | "river"
+    | "showdown"
+    | "gameEnd";
   seatingChart: ({
     id: string;
     name: string;
@@ -24,12 +33,22 @@ export interface Itable {
     | "high_card"
     | null;
   board: Card[];
+  showdownHands: Card[][];
   betting: number[];
   potSize: number;
 }
 
 export interface ItableAPI {
-  state: "" | "beforeGame" | "dealingHands" | "preflop" | "flop";
+  state:
+    | ""
+    | "beforeGame"
+    | "dealingHands"
+    | "preflop"
+    | "flop"
+    | "turn"
+    | "river"
+    | "showdown"
+    | "gameEnd";
   seating_chart?: ({
     id: string;
     name: string;
@@ -52,6 +71,10 @@ export interface ItableAPI {
     | "two_pair"
     | "one_pair"
     | "high_card";
+  showdown_hands: {
+    number: number;
+    suit: "S" | "H" | "D" | "C" | "B";
+  }[][];
   board?: {
     number: number;
     suit: "S" | "H" | "D" | "C" | "B";

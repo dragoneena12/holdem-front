@@ -2,7 +2,16 @@ import { Itable, ItableAPI } from "../types";
 import { Card } from "./card";
 
 export class Table implements Itable {
-  state: "" | "beforeGame" | "dealingHands" | "preflop" | "flop" = "";
+  state:
+    | ""
+    | "beforeGame"
+    | "dealingHands"
+    | "preflop"
+    | "flop"
+    | "turn"
+    | "river"
+    | "showdown"
+    | "gameEnd" = "";
   seatingChart: ({
     id: string;
     name: string;
@@ -23,6 +32,7 @@ export class Table implements Itable {
     | "one_pair"
     | "high_card"
     | null = null;
+  showdownHands: Card[][] = [];
   board: Card[] = [];
   betting: number[] = [];
   potSize = 0;
@@ -45,6 +55,11 @@ export class Table implements Itable {
       this.hand = [...nHand];
     }
     this.handRank = data.hand_rank !== undefined ? data.hand_rank : null;
+    this.showdownHands = data.showdown_hands.map((hand) =>
+      hand
+        ? hand.map((c) => new Card(c.number, c.suit))
+        : [new Card(0, "B"), new Card(0, "B")]
+    );
     if (data.board !== undefined) {
       const nBoard: Card[] = [];
       data.board.forEach((card) =>

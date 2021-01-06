@@ -16,7 +16,7 @@ type actionType =
   | "raise"
   | "fold"
   | "allIn"
-  | "showDown"
+  | "showdown"
   | "muck"
   | "seat"
   | "start"
@@ -30,7 +30,7 @@ const actionName = {
   raise: "レイズ",
   fold: "フォールド",
   allIn: "オールイン",
-  showDown: "ショーダウン",
+  showdown: "ショーダウン",
   muck: "マック",
   seat: "すわる",
   start: "スタート",

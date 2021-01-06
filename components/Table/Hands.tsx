@@ -54,8 +54,18 @@ export const Hands: React.FC<{
                   }%`,
                 }}
               >
-                <img src={`/svg/1B.svg`} alt="1B" />
-                <img src={`/svg/1B.svg`} alt="1B" />
+                <img
+                  src={`/svg/${props.table.showdownHands[
+                    i
+                  ][0].getCardString()}.svg`}
+                  alt={props.table.showdownHands[i][0].getCardString()}
+                />
+                <img
+                  src={`/svg/${props.table.showdownHands[
+                    i
+                  ][1].getCardString()}.svg`}
+                  alt={props.table.showdownHands[i][1].getCardString()}
+                />
               </div>
             )
         )}

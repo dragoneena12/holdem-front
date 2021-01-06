@@ -25,22 +25,42 @@ export const Panel: React.FC<IPanel> = (props) => {
       {!props.socket && <Name name={props.name} setName={props.setName} />}
       {props.socket ? (
         <>
-          {currentMaxBet === 0 && (
-            <Action socket={props.socket} name={props.name} action="check" />
+          {props.table.state !== "showdown" && (
+            <>
+              {currentMaxBet === 0 && (
+                <Action
+                  socket={props.socket}
+                  name={props.name}
+                  action="check"
+                />
+              )}
+              {currentMaxBet !== 0 && (
+                <Action socket={props.socket} name={props.name} action="call" />
+              )}
+              {currentMaxBet === 0 && (
+                <Action socket={props.socket} name={props.name} action="bet" />
+              )}
+              {currentMaxBet !== 0 && (
+                <Action
+                  socket={props.socket}
+                  name={props.name}
+                  action="raise"
+                />
+              )}
+              <Action socket={props.socket} name={props.name} action="fold" />
+            </>
           )}
-          {currentMaxBet !== 0 && (
-            <Action socket={props.socket} name={props.name} action="call" />
+          {/* <Action socket={props.socket} name={props.name} action="allIn" /> */}
+          {props.table.state === "showdown" && (
+            <>
+              <Action
+                socket={props.socket}
+                name={props.name}
+                action="showdown"
+              />
+              <Action socket={props.socket} name={props.name} action="muck" />
+            </>
           )}
-          {currentMaxBet === 0 && (
-            <Action socket={props.socket} name={props.name} action="bet" />
-          )}
-          {currentMaxBet !== 0 && (
-            <Action socket={props.socket} name={props.name} action="raise" />
-          )}
-          <Action socket={props.socket} name={props.name} action="fold" />
-          {/* <Action socket={props.socket} name={props.name} action="allIn" />
-          <Action socket={props.socket} name={props.name} action="showDown" />
-          <Action socket={props.socket} name={props.name} action="muck" /> */}
           {props.table.state === "beforeGame" && (
             <Action socket={props.socket} name={props.name} action="start" />
           )}
