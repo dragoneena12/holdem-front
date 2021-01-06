@@ -11,6 +11,7 @@
 
 .myHand img {
   width: 100%;
+  height: auto;
   margin: 1px;
 }
 
@@ -24,6 +25,7 @@
 
 .otherHand img {
   width: 100%;
+  height: auto;
   margin: 1px;
 }
 
