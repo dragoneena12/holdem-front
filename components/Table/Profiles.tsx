@@ -65,8 +65,8 @@ export const Profiles: React.FC<{
                 avatar={<Avatar>U</Avatar>}
                 label={
                   <>
-                    <p>{player.name}</p>
-                    <p>${player.bankroll}</p>
+                    <p>{player.player.name}</p>
+                    <p>${player.player.bankroll}</p>
                   </>
                 }
                 color={props.table.currentPlayer === i ? "primary" : "default"}
@@ -77,7 +77,7 @@ export const Profiles: React.FC<{
                   props.table.buttonPlayer === i ? <StarIcon /> : <div />
                 }
               />
-              {player.name === props.name &&
+              {player.player.name === props.name &&
               props.table.state == "beforeGame" ? (
                 <Button
                   variant="contained"
@@ -92,7 +92,7 @@ export const Profiles: React.FC<{
             <>
               {props.table.state == "beforeGame" ? (
                 props.table.seatingChart.find(
-                  (el) => el?.name === props.name
+                  (el) => el?.player.name === props.name
                 ) ? (
                   <Button variant="contained" color="primary" disabled>
                     空席

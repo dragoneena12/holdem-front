@@ -1,3 +1,4 @@
+import { Betting } from "../components/Table/Betting";
 import { Itable, ItableAPI } from "../types";
 import { Card } from "./card";
 
@@ -13,9 +14,14 @@ export class Table implements Itable {
     | "showdown"
     | "gameEnd" = "";
   seatingChart: ({
-    id: string;
-    name: string;
-    bankroll: number;
+    player: {
+      id: string;
+      name: string;
+      bankroll: number;
+    };
+    hand: Card[];
+    betting: number;
+    ongoing: boolean;
   } | null)[] = [];
   buttonPlayer: number | null = null;
   currentPlayer: number | null = null;
@@ -32,34 +38,43 @@ export class Table implements Itable {
     | "one_pair"
     | "high_card"
     | null = null;
-  showdownHands: Card[][] = [];
   board: Card[] = [];
-  betting: number[] = [];
   potSize = 0;
 
   setTableStatus(data: ItableAPI): void {
     this.state = data.state;
-    this.seatingChart =
-      data.seating_chart !== undefined ? data.seating_chart : this.seatingChart;
-    this.buttonPlayer =
-      data.button_player !== undefined ? data.button_player : this.buttonPlayer;
-    this.currentPlayer =
-      data.current_player !== undefined
-        ? data.current_player
-        : this.currentPlayer;
-    this.betting = data.betting !== undefined ? data.betting : this.betting;
-    this.potSize = data.pot_size !== undefined ? data.pot_size : this.potSize;
+    const sc: ({
+      player: {
+        id: string;
+        name: string;
+        bankroll: number;
+      };
+      hand: Card[];
+      betting: number;
+      ongoing: boolean;
+    } | null)[] = [];
+    data.seating_chart.forEach((el) =>
+      sc.push(
+        el
+          ? {
+              player: el.player,
+              hand: el.hand.map((c) => new Card(c.number, c.suit)),
+              betting: el.betting,
+              ongoing: el.ongoing,
+            }
+          : el
+      )
+    );
+    this.seatingChart = sc;
+    this.buttonPlayer = data.button_player;
+    this.currentPlayer = data.current_player;
+    this.potSize = data.pot_size;
     if (data.hand !== undefined) {
       const nHand: Card[] = [];
       data.hand.forEach((card) => nHand.push(new Card(card.number, card.suit)));
       this.hand = [...nHand];
     }
     this.handRank = data.hand_rank !== undefined ? data.hand_rank : null;
-    this.showdownHands = data.showdown_hands.map((hand) =>
-      hand
-        ? hand.map((c) => new Card(c.number, c.suit))
-        : [new Card(0, "B"), new Card(0, "B")]
-    );
     if (data.board !== undefined) {
       const nBoard: Card[] = [];
       data.board.forEach((card) =>

@@ -13,9 +13,14 @@ export interface Itable {
     | "showdown"
     | "gameEnd";
   seatingChart: ({
-    id: string;
-    name: string;
-    bankroll: number;
+    player: {
+      id: string;
+      name: string;
+      bankroll: number;
+    };
+    hand: Card[];
+    betting: number;
+    ongoing: boolean;
   } | null)[];
   buttonPlayer: number | null;
   currentPlayer: number | null;
@@ -33,8 +38,6 @@ export interface Itable {
     | "high_card"
     | null;
   board: Card[];
-  showdownHands: Card[][];
-  betting: number[];
   potSize: number;
 }
 
@@ -49,13 +52,21 @@ export interface ItableAPI {
     | "river"
     | "showdown"
     | "gameEnd";
-  seating_chart?: ({
-    id: string;
-    name: string;
-    bankroll: number;
+  seating_chart: ({
+    player: {
+      id: string;
+      name: string;
+      bankroll: number;
+    };
+    hand: {
+      number: number;
+      suit: "S" | "H" | "D" | "C" | "B";
+    }[];
+    betting: number;
+    ongoing: boolean;
   } | null)[];
-  button_player?: number;
-  current_player?: number;
+  button_player: number;
+  current_player: number;
   hand?: {
     number: number;
     suit: "S" | "H" | "D" | "C" | "B";
@@ -71,14 +82,9 @@ export interface ItableAPI {
     | "two_pair"
     | "one_pair"
     | "high_card";
-  showdown_hands: {
-    number: number;
-    suit: "S" | "H" | "D" | "C" | "B";
-  }[][];
-  board?: {
+  board: {
     number: number;
     suit: "S" | "H" | "D" | "C" | "B";
   }[];
-  betting?: number[];
-  pot_size?: number;
+  pot_size: number;
 }

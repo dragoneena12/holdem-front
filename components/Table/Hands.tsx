@@ -54,16 +54,16 @@ export const Hands: React.FC<{
                 }}
               >
                 <img
-                  src={`/svg/${props.table.showdownHands[
+                  src={`/svg/${props.table.seatingChart[
                     i
-                  ][0].getCardString()}.svg`}
-                  alt={props.table.showdownHands[i][0].getCardString()}
+                  ]?.hand[0].getCardString()}.svg`}
+                  alt={props.table.seatingChart[i]?.hand[0].getCardString()}
                 />
                 <img
-                  src={`/svg/${props.table.showdownHands[
+                  src={`/svg/${props.table.seatingChart[
                     i
-                  ][1].getCardString()}.svg`}
-                  alt={props.table.showdownHands[i][1].getCardString()}
+                  ]?.hand[1].getCardString()}.svg`}
+                  alt={props.table.seatingChart[i]?.hand[1].getCardString()}
                 />
               </div>
             )

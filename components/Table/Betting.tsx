@@ -37,7 +37,7 @@ export const Betting: React.FC<{
                 }%`,
               }}
             >
-              {`\$${props.table.betting[i]}`}
+              {`\$${props.table.seatingChart[i]?.betting}`}
             </p>
           )
       )}

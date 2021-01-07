@@ -16,10 +16,10 @@ interface IPanel {
 }
 
 export const Panel: React.FC<IPanel> = (props) => {
-  const currentMaxBet = props.table.betting.reduce(
-    (a, b) => (a > b ? a : b),
-    0
-  );
+  let currentMaxBet = 0;
+  props.table.seatingChart.forEach((p) => {
+    if (p) currentMaxBet += p.betting;
+  });
   return (
     <div className={classes.Panel}>
       {!props.socket && <Name name={props.name} setName={props.setName} />}
