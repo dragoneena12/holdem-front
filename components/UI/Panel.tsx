@@ -28,6 +28,13 @@ export const Panel: React.FC<IPanel> = (props) => {
         <>
           {props.table.state !== "showdown" && (
             <>
+              <Action
+                socket={props.socket}
+                name={props.name}
+                table={props.table}
+                mySeatNum={props.mySeatNum}
+                action="fold"
+              />
               {currentMaxBet === 0 && (
                 <Action
                   socket={props.socket}
@@ -46,13 +53,6 @@ export const Panel: React.FC<IPanel> = (props) => {
                   action="call"
                 />
               )}
-              <Action
-                socket={props.socket}
-                name={props.name}
-                table={props.table}
-                mySeatNum={props.mySeatNum}
-                action="fold"
-              />
               {currentMaxBet === 0 && (
                 <Action
                   socket={props.socket}

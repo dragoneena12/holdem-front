@@ -51,7 +51,9 @@ export const Action: React.FC<IAction> = (props) => {
       label: "Min",
     },
     {
-      value: props.table.seatingChart[props.mySeatNum]!.player.bankroll,
+      value: (props.table.seatingChart[props.mySeatNum]?.player.bankroll
+        ? props.table.seatingChart[props.mySeatNum]?.player.bankroll
+        : 100) as number,
       label: "All in",
     },
   ];
@@ -83,7 +85,7 @@ export const Action: React.FC<IAction> = (props) => {
             step={1}
             marks={marks}
             min={props.table.BB}
-            max={props.table.seatingChart[props.mySeatNum]!.player.bankroll}
+            max={props.table.seatingChart[props.mySeatNum]?.player.bankroll}
             valueLabelDisplay="on"
           />
           <Button
