@@ -39,6 +39,7 @@ export interface Itable {
     | null;
   board: Card[];
   potSize: number;
+  BB: number;
 }
 
 export interface ItableAPI {

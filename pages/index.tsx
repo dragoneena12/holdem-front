@@ -36,6 +36,7 @@ const Home: React.FC = () => {
           setName={setName}
           table={table}
           setTable={setTable}
+          mySeatNum={mySeatNum}
         />
       </main>
     </div>

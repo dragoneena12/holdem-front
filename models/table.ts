@@ -1,4 +1,3 @@
-import { Betting } from "../components/Table/Betting";
 import { Itable, ItableAPI } from "../types";
 import { Card } from "./card";
 
@@ -40,6 +39,7 @@ export class Table implements Itable {
     | null = null;
   board: Card[] = [];
   potSize = 0;
+  BB = 2; // Todo: Magic Number
 
   setTableStatus(data: ItableAPI): void {
     this.state = data.state;

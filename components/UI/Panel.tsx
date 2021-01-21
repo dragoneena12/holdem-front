@@ -13,6 +13,7 @@ interface IPanel {
   setName: React.Dispatch<React.SetStateAction<string>>;
   table: Table;
   setTable: React.Dispatch<React.SetStateAction<Table>>;
+  mySeatNum: number;
 }
 
 export const Panel: React.FC<IPanel> = (props) => {
@@ -31,23 +32,45 @@ export const Panel: React.FC<IPanel> = (props) => {
                 <Action
                   socket={props.socket}
                   name={props.name}
+                  table={props.table}
+                  mySeatNum={props.mySeatNum}
                   action="check"
                 />
-              )}
-              {currentMaxBet !== 0 && (
-                <Action socket={props.socket} name={props.name} action="call" />
-              )}
-              {currentMaxBet === 0 && (
-                <Action socket={props.socket} name={props.name} action="bet" />
               )}
               {currentMaxBet !== 0 && (
                 <Action
                   socket={props.socket}
                   name={props.name}
+                  table={props.table}
+                  mySeatNum={props.mySeatNum}
+                  action="call"
+                />
+              )}
+              <Action
+                socket={props.socket}
+                name={props.name}
+                table={props.table}
+                mySeatNum={props.mySeatNum}
+                action="fold"
+              />
+              {currentMaxBet === 0 && (
+                <Action
+                  socket={props.socket}
+                  name={props.name}
+                  table={props.table}
+                  mySeatNum={props.mySeatNum}
+                  action="bet"
+                />
+              )}
+              {currentMaxBet !== 0 && (
+                <Action
+                  socket={props.socket}
+                  name={props.name}
+                  table={props.table}
+                  mySeatNum={props.mySeatNum}
                   action="raise"
                 />
               )}
-              <Action socket={props.socket} name={props.name} action="fold" />
             </>
           )}
           {/* <Action socket={props.socket} name={props.name} action="allIn" /> */}
@@ -56,15 +79,35 @@ export const Panel: React.FC<IPanel> = (props) => {
               <Action
                 socket={props.socket}
                 name={props.name}
+                table={props.table}
+                mySeatNum={props.mySeatNum}
                 action="showdown"
               />
-              <Action socket={props.socket} name={props.name} action="muck" />
+              <Action
+                socket={props.socket}
+                name={props.name}
+                table={props.table}
+                mySeatNum={props.mySeatNum}
+                action="muck"
+              />
             </>
           )}
           {props.table.state === "beforeGame" && (
-            <Action socket={props.socket} name={props.name} action="start" />
+            <Action
+              socket={props.socket}
+              name={props.name}
+              table={props.table}
+              mySeatNum={props.mySeatNum}
+              action="start"
+            />
           )}
-          <Action socket={props.socket} name={props.name} action="reset" />
+          {/* <Action
+            socket={props.socket}
+            name={props.name}
+            table={props.table}
+            mySeatNum={props.mySeatNum}
+            action="reset"
+          /> */}
         </>
       ) : (
         <>

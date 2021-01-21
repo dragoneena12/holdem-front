@@ -1,0 +1,9 @@
+.Slider {
+  width: 220px;
+  margin-left: 30px;
+}
+.ActionContainer {
+  display: flex;
+  align-items: center;
+  margin: 0 10px;
+}
